@@ -6,9 +6,10 @@ interface ImageBlockProps {
   width: number
   height: number
   className?: string
+  priority?: boolean
 }
 
-export default function ImageBlock({ src, alt, width, height, className = '' }: ImageBlockProps) {
+export default function ImageBlock({ src, alt, width, height, className = '', priority = false }: ImageBlockProps) {
   return (
     <div className={className}>
       <Image
@@ -16,6 +17,8 @@ export default function ImageBlock({ src, alt, width, height, className = '' }: 
         alt={alt}
         width={width}
         height={height}
+        priority={priority}
+        loading={priority ? undefined : 'lazy'}
         className="w-full h-auto rounded-lg"
       />
     </div>

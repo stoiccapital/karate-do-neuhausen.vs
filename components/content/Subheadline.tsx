@@ -18,9 +18,8 @@ export default function Subheadline({
   className = '' 
 }: SubheadlineProps) {
   return (
-    <p className={`text-lg md:text-xl text-gray-600 ${alignMap[align]} ${className}`}>
+    <p className={`text-lg md:text-xl text-neutral-600 ${alignMap[align]} ${className}`}>
       {children}
     </p>
   )
 }
-

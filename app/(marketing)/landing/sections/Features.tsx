@@ -1,35 +1,36 @@
 import Section from '@/components/structural/Section'
 import Container from '@/components/structural/Container'
+import Stack from '@/components/structural/Stack'
+import Grid from '@/components/structural/Grid'
 import Headline from '@/components/content/Headline'
 import Subheadline from '@/components/content/Subheadline'
-import Grid from '@/components/structural/Grid'
 import FeatureCard from '@/components/conversion/FeatureCard'
 import ImageBlock from '@/components/media/ImageBlock'
 
 export default function Features() {
   const features = [
     {
-      title: 'Beginner-Friendly Classes',
-      body: 'Start your journey with classes designed for all skill levels, from complete beginners to advanced practitioners.',
+      title: 'Jederzeit starten, keine Vorkenntnisse nötig',
+      body: 'Anfängerfreundliche Kurse starten Sie ab Tag eins. Fortschritt Woche für Woche in Ihrem Tempo.',
       link: {
-        href: '#classes',
-        text: 'View Schedule',
+        href: '/trainingszeiten',
+        text: 'Kursplan ansehen',
       },
     },
     {
-      title: 'Expert Instructors',
-      body: 'Learn from certified masters with decades of experience in traditional karate and modern teaching methods.',
+      title: 'Lernen Sie von qualifizierten Experten',
+      body: 'Ausgebildete Trainer nutzen bewährte Methoden. Erhalten Sie konsistente, qualitativ hochwertige Anleitung in jeder Stunde.',
       link: {
-        href: '#instructors',
-        text: 'Meet Instructors',
+        href: '/trainer',
+        text: 'Unsere Trainer kennenlernen',
       },
     },
     {
-      title: 'Flexible Schedule',
-      body: 'Choose from multiple class times throughout the week to fit your busy lifestyle.',
+      title: 'Wählen Sie Ihre Trainingszeiten',
+      body: 'Mehrere wöchentliche Termine passen zu Ihrem Zeitplan. Trainieren Sie 2-3 Mal pro Woche für beste Ergebnisse.',
       link: {
-        href: '#schedule',
-        text: 'See Times',
+        href: '/trainingszeiten',
+        text: 'Alle Zeiten ansehen',
       },
     },
   ]
@@ -37,32 +38,33 @@ export default function Features() {
   return (
     <Section>
       <Container>
-        <Headline level={2} align="center">
-          What We Offer
-        </Headline>
-        <Subheadline align="center" className="mt-4">
-          Comprehensive karate training for everyone
-        </Subheadline>
-        <Grid cols={3} gap="lg" className="mt-12">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              title={feature.title}
-              body={feature.body}
-              link={feature.link}
+        <Stack direction="vertical" gap="lg" align="center">
+          <Headline level={2} align="center">
+            Was wir anbieten
+          </Headline>
+          <Subheadline align="center">
+            Drei Wege, wie wir Training zugänglich und effektiv machen
+          </Subheadline>
+          <Grid cols={3} gap="lg">
+            {features.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                title={feature.title}
+                body={feature.body}
+                link={feature.link}
+              />
+            ))}
+          </Grid>
+          <div>
+            <ImageBlock
+              src="/placeholder-training.jpg"
+              alt="Gruppe von Schülern übt gemeinsam Kampfkunsttechniken im Dojo"
+              width={1200}
+              height={600}
             />
-          ))}
-        </Grid>
-        <div className="mt-16">
-          <ImageBlock
-            src="/placeholder-training.jpg"
-            alt="Karate training session"
-            width={1200}
-            height={600}
-          />
-        </div>
+          </div>
+        </Stack>
       </Container>
     </Section>
   )
 }
-

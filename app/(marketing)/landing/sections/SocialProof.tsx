@@ -1,36 +1,39 @@
 import Section from '@/components/structural/Section'
 import Container from '@/components/structural/Container'
+import Stack from '@/components/structural/Stack'
 import Headline from '@/components/content/Headline'
 import Subheadline from '@/components/content/Subheadline'
+import Paragraph from '@/components/content/Paragraph'
 import Grid from '@/components/structural/Grid'
 
 export default function SocialProof() {
   const metrics = [
-    { value: '500+', label: 'Active Students' },
-    { value: '20+', label: 'Years Experience' },
-    { value: '15+', label: 'Certified Instructors' },
-    { value: '1000+', label: 'Graduates' },
+    { value: '50+', label: 'aktive Schüler' },
+    { value: '20+', label: 'Jahre Erfahrung' },
+    { value: '20', label: 'qualifizierte Trainer' },
+    { value: '1,000+', label: 'Absolventen' },
   ]
 
   return (
     <Section>
       <Container>
-        <Headline level={2} align="center">
-          Trusted by the Community
-        </Headline>
-        <Subheadline align="center" className="mt-4">
-          Join hundreds of students on their karate journey
-        </Subheadline>
-        <Grid cols={4} gap="lg" className="mt-12">
-          {metrics.map((metric, index) => (
-            <div key={index} className="text-center">
-              <div className="text-4xl font-bold text-blue-600">{metric.value}</div>
-              <div className="text-gray-600 mt-2">{metric.label}</div>
-            </div>
-          ))}
-        </Grid>
+        <Stack direction="vertical" gap="lg" align="center">
+          <Headline level={2} align="center">
+            Vertrauen von über 50 Schülern in Neuhausen
+          </Headline>
+          <Subheadline align="center">
+            Zwei Jahrzehnte bewährter Ergebnisse. Werden Sie Teil einer Gemeinschaft, die gemeinsam stärker wird.
+          </Subheadline>
+          <Grid cols={4} gap="lg">
+            {metrics.map((metric, index) => (
+              <Stack key={index} direction="vertical" gap="sm" align="center">
+                <Headline level={3} align="center">{metric.value}</Headline>
+                <Paragraph align="center">{metric.label}</Paragraph>
+              </Stack>
+            ))}
+          </Grid>
+        </Stack>
       </Container>
     </Section>
   )
 }
-

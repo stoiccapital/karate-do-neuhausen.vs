@@ -1,33 +1,31 @@
-import Section from '@/components/structural/Section'
-import Container from '@/components/structural/Container'
-import Headline from '@/components/content/Headline'
-import Subheadline from '@/components/content/Subheadline'
-import Stack from '@/components/structural/Stack'
-import PrimaryButton from '@/components/actions/PrimaryButton'
-import SecondaryButton from '@/components/actions/SecondaryButton'
+import Section from '@/components/structural/Section';
+import Container from '@/components/structural/Container';
+import Stack from '@/components/structural/Stack';
+import Headline from '@/components/content/Headline';
+import Paragraph from '@/components/content/Paragraph';
+import PrimaryButton from '@/components/actions/PrimaryButton';
 
 export default function FinalCTA() {
   return (
-    <Section>
+    <Section id="kontakt">
       <Container>
-        <div className="text-center max-w-3xl mx-auto">
-          <Headline level={2} align="center">
-            Ready to Begin Your Journey?
-          </Headline>
-          <Subheadline align="center" className="mt-4">
-            Join us today and take the first step toward mastering karate. Your path to physical and mental excellence starts here.
-          </Subheadline>
-          <Stack direction="horizontal" gap="md" align="center" className="mt-8 justify-center">
-            <PrimaryButton href="#signup">
-              Start Training Today
-            </PrimaryButton>
-            <SecondaryButton href="#contact">
-              Contact Us
-            </SecondaryButton>
-          </Stack>
-        </div>
+        <Stack direction="vertical" gap="lg" align="center">
+          <Container maxWidth="narrow">
+            <Stack direction="vertical" gap="md" align="center">
+              <Headline level={2} align="center">
+                Bereit, mit Karate zu starten?
+              </Headline>
+              <Paragraph align="center">
+                Vereinbaren Sie ein unverbindliches Probetraining und lernen Sie unser Dojo,
+                die Trainer und die Trainingsatmosphäre persönlich kennen.
+              </Paragraph>
+              <PrimaryButton href="/trainingszeiten">
+                Probetraining vereinbaren
+              </PrimaryButton>
+            </Stack>
+          </Container>
+        </Stack>
       </Container>
     </Section>
-  )
+  );
 }
-

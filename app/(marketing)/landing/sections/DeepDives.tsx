@@ -3,6 +3,7 @@ import Container from '@/components/structural/Container'
 import Headline from '@/components/content/Headline'
 import Subheadline from '@/components/content/Subheadline'
 import Stack from '@/components/structural/Stack'
+import Grid from '@/components/structural/Grid'
 import Paragraph from '@/components/content/Paragraph'
 import ImageBlock from '@/components/media/ImageBlock'
 
@@ -10,52 +11,53 @@ export default function DeepDives() {
   return (
     <Section>
       <Container>
-        <Headline level={2} align="center">
-          Our Training Philosophy
-        </Headline>
-        <Subheadline align="center" className="mt-4">
-          Understanding the depth of traditional karate
-        </Subheadline>
-        <div className="mt-12 space-y-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <Headline level={3} align="left">
-                Kata Practice
-              </Headline>
-              <Paragraph align="left" className="mt-4">
-                Kata are pre-arranged sequences of movements that teach proper form, technique, and application. Through consistent kata practice, students develop muscle memory, balance, and understanding of combat principles.
-              </Paragraph>
-            </div>
-            <div>
-              <ImageBlock
-                src="/placeholder-kata.jpg"
-                alt="Kata practice"
-                width={600}
-                height={400}
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:order-2">
-              <Headline level={3} align="left">
-                Kumite Training
-              </Headline>
-              <Paragraph align="left" className="mt-4">
-                Controlled sparring sessions allow students to apply techniques in a safe, supervised environment. Kumite develops timing, distance control, and practical self-defense skills while maintaining respect and discipline.
-              </Paragraph>
-            </div>
-            <div className="lg:order-1">
-              <ImageBlock
-                src="/placeholder-kumite.jpg"
-                alt="Kumite training"
-                width={600}
-                height={400}
-              />
-            </div>
-          </div>
-        </div>
+        <Stack direction="vertical" gap="lg" align="center">
+          <Headline level={2} align="center">
+            Wie wir trainieren
+          </Headline>
+          <Subheadline align="center">
+            Zwei Kernpraktiken, die vollständige Kampfkünstler aufbauen
+          </Subheadline>
+          <Stack direction="vertical" gap="lg">
+            <Grid cols={2} gap="lg" className="items-center">
+              <Stack direction="vertical" gap="md" align="left">
+                <Headline level={3} align="left">
+                  Kata-Training
+                </Headline>
+                <Paragraph align="left">
+                  Meistern Sie präzise Bewegungen durch strukturierte Formen. Bauen Sie Muskelgedächtnis auf. Entwickeln Sie Technik, die zur zweiten Natur wird.
+                </Paragraph>
+              </Stack>
+              <div>
+                <ImageBlock
+                  src="/placeholder-kata.jpg"
+                  alt="Schüler führt vorgegebene Bewegungssequenzen aus, um Technik und Form zu entwickeln"
+                  width={600}
+                  height={400}
+                />
+              </div>
+            </Grid>
+            <Grid cols={2} gap="lg" className="items-center">
+              <Stack direction="vertical" gap="md" align="left">
+                <Headline level={3} align="left">
+                  Kumite-Training
+                </Headline>
+                <Paragraph align="left">
+                  Üben Sie echte Techniken im sicheren, kontrollierten Sparring. Lernen Sie Timing und Distanz. Wenden Sie Fähigkeiten unter Druck an.
+                </Paragraph>
+              </Stack>
+              <div>
+                <ImageBlock
+                  src="/placeholder-kumite.jpg"
+                  alt="Schüler üben kontrollierte Sparring-Techniken in überwachtem Trainingsumfeld"
+                  width={600}
+                  height={400}
+                />
+              </div>
+            </Grid>
+          </Stack>
+        </Stack>
       </Container>
     </Section>
   )
 }
-

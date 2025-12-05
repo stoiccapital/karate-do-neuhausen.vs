@@ -1,20 +1,12 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import './globals.css';
+import type { ReactNode } from 'react';
 
-export const metadata: Metadata = {
-  title: 'Karate Do Neuhausen',
-  description: 'Karate Do Neuhausen Landing Page',
-}
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="de">
+      <body>
+        {children}
+      </body>
     </html>
-  )
+  );
 }
-

@@ -1,50 +1,112 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
 import PrimaryButton from '../actions/PrimaryButton'
 
-interface NavLink {
-  href: string
-  text: string
-}
-
 interface NavbarProps {
-  logo: string
-  links: NavLink[]
-  cta?: {
-    href: string
-    text: string
-  }
+  logo?: string
 }
 
-export default function Navbar({ logo, links, cta }: NavbarProps) {
+export default function Navbar({ logo = 'Karate Do Neuhausen' }: NavbarProps) {
+  const [open, setOpen] = useState(false)
+
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
+    <nav className="sticky top-0 z-50 bg-white border-b border-neutral-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <a href="/" className="text-xl font-bold">
-              {logo}
-            </a>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-gray-700 hover:text-gray-900 font-medium"
-              >
-                {link.text}
-              </a>
-            ))}
-          </div>
-          {cta && (
-            <div className="hidden md:block">
-              <PrimaryButton href={cta.href}>
-                {cta.text}
-              </PrimaryButton>
-            </div>
-          )}
+        {/* Mobile hamburger row */}
+        <div className="flex items-center justify-between h-16 md:hidden">
+          <Link href="/" className="text-xl font-bold" aria-label="Zur Startseite">
+            {logo}
+          </Link>
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 text-neutral-700 hover:text-neutral-900"
+            aria-label="Menü öffnen"
+            aria-expanded={open}
+          >
+            <span className="text-2xl">☰</span>
+          </button>
         </div>
+
+        {/* Desktop layout */}
+        <div className="hidden md:flex items-center justify-between h-16">
+          {/* LEFT: Brand */}
+          <div className="flex items-center">
+            <Link href="/" className="text-xl font-bold" aria-label="Zur Startseite">
+              {logo}
+            </Link>
+          </div>
+
+          {/* CENTER: Main navigation links */}
+          <div className="flex items-center gap-8">
+            <Link
+              href="/trainer"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Trainer
+            </Link>
+            <Link
+              href="/verein"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Der Verein
+            </Link>
+            <Link
+              href="/trainingszeiten"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Trainingszeiten
+            </Link>
+            <Link
+              href="/preise"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Preise
+            </Link>
+          </div>
+
+          {/* RIGHT: Primary CTA */}
+          <div>
+            <PrimaryButton href="https://wa.me/491791226471" target="_blank" rel="noreferrer">
+              Jetzt anmelden
+            </PrimaryButton>
+          </div>
+        </div>
+
+        {/* Mobile dropdown menu */}
+        {open && (
+          <div className="flex flex-col gap-4 py-4 md:hidden">
+            <Link
+              href="/trainer"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Trainer
+            </Link>
+            <Link
+              href="/verein"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Der Verein
+            </Link>
+            <Link
+              href="/trainingszeiten"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Trainingszeiten
+            </Link>
+            <Link
+              href="/preise"
+              className="text-neutral-700 hover:text-neutral-900 font-medium"
+            >
+              Preise
+            </Link>
+            <PrimaryButton href="https://wa.me/491791226471" target="_blank" rel="noreferrer">
+              Jetzt anmelden
+            </PrimaryButton>
+          </div>
+        )}
       </div>
     </nav>
   )
 }
-

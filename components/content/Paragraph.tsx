@@ -18,9 +18,8 @@ export default function Paragraph({
   className = '' 
 }: ParagraphProps) {
   return (
-    <p className={`text-base text-gray-700 ${alignMap[align]} ${className}`}>
+    <p className={`text-base text-neutral-700 ${alignMap[align]} ${className}`}>
       {children}
     </p>
   )
 }
-

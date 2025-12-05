@@ -5,19 +5,23 @@ interface SecondaryButtonProps {
   href?: string
   onClick?: () => void
   className?: string
+  target?: string
+  rel?: string
 }
 
 export default function SecondaryButton({ 
   children, 
   href, 
   onClick,
-  className = '' 
+  className = '',
+  target,
+  rel
 }: SecondaryButtonProps) {
-  const baseClasses = 'inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors'
+  const baseClasses = 'inline-flex items-center justify-center px-6 py-3 text-base font-medium text-neutral-900 bg-white border-2 border-neutral-300 rounded-lg hover:bg-neutral-50 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900'
   
   if (href) {
     return (
-      <a href={href} className={`${baseClasses} ${className}`}>
+      <a href={href} target={target} rel={rel} className={`${baseClasses} ${className}`}>
         {children}
       </a>
     )
@@ -29,4 +33,3 @@ export default function SecondaryButton({
     </button>
   )
 }
-

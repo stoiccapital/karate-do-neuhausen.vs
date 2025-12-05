@@ -1,2 +1,5 @@
-export { default } from './(marketing)/landing/page'
+import { redirect } from 'next/navigation';
 
+export default function Page() {
+  redirect('/landing');
+}
