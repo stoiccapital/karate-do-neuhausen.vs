@@ -3,11 +3,12 @@ import { ReactNode } from 'react'
 interface SectionProps {
   children: ReactNode
   className?: string
+  id?: string
 }
 
-export default function Section({ children, className = '' }: SectionProps) {
+export default function Section({ children, className = '', id }: SectionProps) {
   return (
-    <section className={`py-16 ${className}`}>
+    <section id={id} className={`py-16 ${className}`}>
       {children}
     </section>
   )
